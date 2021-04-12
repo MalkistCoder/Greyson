@@ -10,7 +10,7 @@ import pingus
 
 # Hello! Welcome to the official GitHub repository of Greyson Bot. 
 
-client = commands.AutoShardedBot(command_prefix='meow!',intents=discord.Intents.all())
+client = commands.AutoShardedBot(command_prefix='*',intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
@@ -21,7 +21,7 @@ async def on_member_join(m):
     if m.guild.id == 828581824711753738:
         await asyncio.sleep(0.01)
         await m.add_roles(m.guild.get_role(828659697170907166))
-        await m.guild.get_channel(831034662167904326).send()
+        await m.guild.get_channel(831034662167904326).send(f'Welcome {m.mention} to {m.guild.name}!')
 
 @client.command()
 async def ping(ctx):
