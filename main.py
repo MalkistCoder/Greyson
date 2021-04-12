@@ -26,13 +26,13 @@ async def on_member_join(m):
 @client.command()
 async def ping(ctx):
     # This tells us the bot's ping.
-    await ctx.send(f'Pong! {client.latency}')
+    await ctx.send(f'Pong! {round(client.latency*1000,2)}')
 
 @client.command(name='bignum',aliases=['getperiod','period','nameperiod','pow1000'])
 async def period(ctx,power:int=0):
     try:
         await ctx.send(f'1,000^{power} = 1 {nameperiod(power)}')
-    finally:
+    except:
         await ctx.send('Your number was too big!')
 
 @tasks.loop(seconds=12)
