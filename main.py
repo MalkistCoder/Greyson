@@ -35,9 +35,13 @@ async def period(ctx,power:int=0):
     except:
         await ctx.send('Your number was too big!')
 
+@client.command()
+async def meow(ctx):
+    await ctx.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
+
 @tasks.loop(seconds=12)
 async def meow_task():
-    if random.randint(1,32) == 1:
+    if random.randint(1,128) == 1:
         # Gets Greyson's server
         greyson_groop = client.get_guild(828581824711753738)
         # Gets the proper channel
