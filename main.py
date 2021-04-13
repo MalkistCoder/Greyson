@@ -23,6 +23,16 @@ async def on_member_join(m):
         await m.add_roles(m.guild.get_role(828659697170907166))
         await m.guild.get_channel(831034662167904326).send(f'Welcome {m.mention} to {m.guild.name}!')
 
+@client.event
+async def on_message(m):
+    if m.guild.id == 828581824711753738 and m.channel.id == 828581824711753741 and random.randint(1,5) == 1:
+        await m.channel.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
+
+@client.event
+async def on_command_error(ctx,e):
+    await ctx.send(f'An unexpected error has occurred. Details below.\n{str(e)}')
+    raise e
+
 @client.command()
 async def ping(ctx):
     # This tells us the bot's ping.
@@ -39,9 +49,9 @@ async def period(ctx,power:int=0):
 async def meow(ctx):
     await ctx.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
 
-@tasks.loop(seconds=12)
+@tasks.loop(seconds=15)
 async def meow_task():
-    if random.randint(1,128) == 1:
+    if random.randint(1,1024) == 1:
         # Gets Greyson's server
         greyson_groop = client.get_guild(828581824711753738)
         # Gets the proper channel
