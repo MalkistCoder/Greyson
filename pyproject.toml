@@ -1,13 +1,15 @@
 [tool.poetry]
 name = "greyson"
 version = "0.1.0"
-description = ""
-authors = ["AliensCanCode <<>>"]
+description = "This is Greysonbot."
+authors = ["AliensCanCode <alien.12321.yt.alt@yahoo.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 discord = "^1.0.1"
 flask = "^1.1.2"
+conwech = "^2020.8"
+colorama = "^0.4.4"
 
 [tool.poetry.dev-dependencies]
 

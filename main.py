@@ -25,8 +25,9 @@ async def on_member_join(m):
 
 @client.event
 async def on_message(m):
-    if m.guild.id == 828581824711753738 and m.channel.id == 828581824711753741 and random.randint(1,5) == 1:
+    if m.guild.id == 828581824711753738 and m.channel.id == 828581824711753741 and (random.randint(1,16) == 1 or 'meow' in m.clean_content):
         await m.channel.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
+    await client.process_commands(m)
 
 @client.event
 async def on_command_error(ctx,e):
@@ -62,6 +63,19 @@ async def meow_task():
 
 meow_task.start()
 
+@client.command()
+async def animate(ctx):
+    m = await ctx.send('Meow!')
+    for i in range(30):
+        await m.edit(content='o/')
+        await asyncio.sleep(0.75)
+        await m.edit(content='o7')
+        await asyncio.sleep(0.75)
+    await m.delete()
+    mm = await ctx.send('Animation test finished!')
+    await asyncio.sleep(10)
+    await mm.delete()
+    
 
 pingus.up()
 client.run(os.getenv('TOKEN'))
