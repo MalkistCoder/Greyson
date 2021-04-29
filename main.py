@@ -23,11 +23,6 @@ async def on_member_join(m):
         await m.add_roles(m.guild.get_role(828659697170907166))
         await m.guild.get_channel(831034662167904326).send(f'Welcome {m.mention} to {m.guild.name}!')
 
-@client.event
-async def on_message(m):
-    if m.guild.id == 828581824711753738 and m.channel.id == 828581824711753741 and (random.randint(1,16) == 1 or 'meow' in m.clean_content):
-        await m.channel.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
-    await client.process_commands(m)
 
 @client.event
 async def on_command_error(ctx,e):
@@ -50,18 +45,6 @@ async def period(ctx,power:int=0):
 async def meow(ctx):
     await ctx.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
 
-@tasks.loop(seconds=15)
-async def meow_task():
-    if random.randint(1,1024) == 1:
-        # Gets Greyson's server
-        greyson_groop = client.get_guild(828581824711753738)
-        # Gets the proper channel
-        gg_channel = greyson_groop.get_channel(828581824711753741)
-        # Sends the message!
-        # We need to check if the channel is active or not.
-        await gg_channel.send(random.choice(['meow','meow!','Meow!','Meow','*Meow!*','meaw','Meaw!']))
-
-meow_task.start()
 
 @client.command()
 async def animate(ctx):
@@ -78,4 +61,4 @@ async def animate(ctx):
     
 
 pingus.up()
-client.run(os.getenv('TOKEN'))
+client.run(os.environ['TOKEN'])
