@@ -16,6 +16,7 @@ client = commands.AutoShardedBot(command_prefix='*',intents=discord.Intents.all(
 @client.event
 async def on_ready():
     print(f'Ready! {client.user}')
+    await client.change_presence(activity=discord.Activity(name=f'my fabulousness to {len(client.guilds)} servers and {client.users} people.',type=discord.ActivityType.streaming))
 
 @client.event
 async def on_member_join(m):
