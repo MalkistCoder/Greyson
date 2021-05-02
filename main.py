@@ -4,6 +4,7 @@ from math import *
 import discord
 import asyncio
 import random
+import requests
 import datetime
 import os
 import pingus
@@ -47,7 +48,7 @@ async def meow(ctx):
 
 
 @client.command()
-async def animate(ctx):
+async def animatetest(ctx):
     m = await ctx.send('Meow!')
     for i in range(30):
         await m.edit(content='o/')
@@ -58,7 +59,16 @@ async def animate(ctx):
     mm = await ctx.send('Animation test finished!')
     await asyncio.sleep(10)
     await mm.delete()
-    
+
+@client.command()
+async def bible(ctx,b:str,ch:str,v:str):
+    vs = requests.get('https://bible-api.com/{} {}:{}'.format(b,ch,v)).json()
+    embed = discord.Embed(
+        title=vs['reference'],
+        description=vs['text'],
+        color=0x804000
+    )
+    await ctx.send(embed=embed)
 
 pingus.up()
 client.run(os.environ['TOKEN'])
