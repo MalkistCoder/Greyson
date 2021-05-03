@@ -11,7 +11,7 @@ import pingus
 
 # Hello! Welcome to the official GitHub repository of Greyson Bot. 
 
-client = commands.AutoShardedBot(command_prefix='*',intents=discord.Intents.all())
+client = commands.AutoShardedBot(command_prefix='G$',intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
