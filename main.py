@@ -1,5 +1,5 @@
-from discord.ext import commands, tasks
 from conwech.functions import nameperiod, number2text
+from discord.ext import commands, tasks
 from math import *
 import discord
 import asyncio
